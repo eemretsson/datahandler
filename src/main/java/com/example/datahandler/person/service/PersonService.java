@@ -1,5 +1,6 @@
 package com.example.datahandler.person.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,11 +19,12 @@ public class PersonService {
 
     public List<Person> getAllOrLimitedPersons(Integer limit) {
         List<Person> all = repository.findAll();
-        if (limit == null || limit <= 0) {
+
+        if (limit == null) {
             return all;
         }
         return all.stream()
                 .limit(limit)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
