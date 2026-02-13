@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.datahandler.person.exception.DataReadException;
+import com.example.datahandler.person.exception.NoDataFoundException;
 import com.example.datahandler.person.model.Person;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -19,7 +20,7 @@ public class CsvPersonDataSource {
         List<Person> persons = new ArrayList<>();
 
         try {
-            Resource resource = new ClassPathResource("data/dataa.csv");
+            Resource resource = new ClassPathResource("data/data.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
 
             String line;
@@ -39,6 +40,10 @@ public class CsvPersonDataSource {
 
         } catch (IOException e) {
             throw new DataReadException("Kunde inte läsa CSV-filen", e);
+        }
+
+        if(persons.isEmpty()) {
+            throw new NoDataFoundException("Ingen data hittades i csv-filen");
         }
         return persons;
     }
