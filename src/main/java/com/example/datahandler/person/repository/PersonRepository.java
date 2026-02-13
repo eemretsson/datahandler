@@ -2,7 +2,7 @@ package com.example.datahandler.person.repository;
 
 import java.util.List;
 
-import com.example.datahandler.datasource.CsvPersonDataSource;
+import com.example.datahandler.datasource.person.CsvPersonDataSource;
 import com.example.datahandler.person.model.Person;
 import org.springframework.stereotype.Repository;
 
