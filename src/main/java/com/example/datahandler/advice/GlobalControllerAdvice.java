@@ -1,15 +1,15 @@
-package com.example.datahandler.person.advice;
+package com.example.datahandler.advice;
 
 import com.example.datahandler.person.exception.DataLimitException;
 import com.example.datahandler.person.exception.DataReadException;
-import com.example.datahandler.person.exception.NoDataFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @ControllerAdvice
-public class PersonExceptionHandler {
+public class GlobalControllerAdvice {
 
     @ExceptionHandler(DataReadException.class)
     public ResponseEntity<String> handleDataReadException(DataReadException ex) {
@@ -17,15 +17,15 @@ public class PersonExceptionHandler {
                 .body(ex.getMessage());
     }
 
-    @ExceptionHandler(NoDataFoundException.class)
-    public ResponseEntity<String> handleNoDataFoundException(NoDataFoundException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(DataLimitException.class)
+    public ResponseEntity<String> handleDataLimitException(DataLimitException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(ex.getMessage());
     }
 
-    @ExceptionHandler(DataLimitException.class)
-    public ResponseEntity<String> handleDataLimitException(DataLimitException ex) {
-        return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                .body(ex.getMessage());
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> handleLimitTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        DataLimitException dataLimitException = new DataLimitException("Parametern limit måste vara ett positivt heltal");
+        return handleDataLimitException(dataLimitException);
     }
 }
