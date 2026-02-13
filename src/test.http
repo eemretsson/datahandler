@@ -2,14 +2,14 @@
 GET http://localhost:8080/api/data
 Accept: application/json
 
-### Hämta bara 5 rader av datat
+### Limitera data till fem rader
 GET http://localhost:8080/api/data?limit=5
 Accept: application/json
 
-### Hämta rader med negativ limit (bör returnera 400)
+### Försök att limitera data med negativt heltal (bör returnera 400 Bad Request)
 GET http://localhost:8080/api/data?limit=-5
 Accept: application/json
 
-### Hämta rader med fel typ i limit (bör returnera 400)
+### Försök att limitera data med något annat än ett heltal (bör returnera 400 Bad Request)
 GET http://localhost:8080/api/data?limit=abc
 Accept: application/json
