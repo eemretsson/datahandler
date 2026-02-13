@@ -2,6 +2,7 @@ package com.example.datahandler.person.model;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"id", "name", "age", "email"})
 public class Person {
 
     private Long id;
