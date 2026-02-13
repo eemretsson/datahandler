@@ -6,3 +6,10 @@ Accept: application/json
 GET http://localhost:8080/api/data?limit=5
 Accept: application/json
 
+### Hämta rader med negativ limit (bör returnera 400)
+GET http://localhost:8080/api/data?limit=-5
+Accept: application/json
+
+### Hämta rader med fel typ i limit (bör returnera 400)
+GET http://localhost:8080/api/data?limit=abc
+Accept: application/json
