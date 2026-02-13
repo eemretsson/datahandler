@@ -6,19 +6,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.datahandler.person.exception.DataReadException;
 import com.example.datahandler.person.model.Person;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CsvDataSource {
+public class CsvPersonDataSource {
 
     public List<Person> readData(){
         List<Person> persons = new ArrayList<>();
 
         try {
-            Resource resource = new ClassPathResource("data/data.csv");
+            Resource resource = new ClassPathResource("data/dataa.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
 
             String line;
@@ -37,7 +38,7 @@ public class CsvDataSource {
             reader.close();
 
         } catch (IOException e) {
-            throw new RuntimeException("Kunde inte läsa CSV-filen", e);
+            throw new DataReadException("Kunde inte läsa CSV-filen", e);
         }
         return persons;
     }
