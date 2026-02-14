@@ -10,10 +10,10 @@ Mac/Linux-användare kan behöva andra kommandon för att bygga och köra applik
 ## Bygg applikationen
 
 ### Bygg och paketera utan IDE
-1. Öppna en valfri terminal, förslagsvis Windows PowerShell, eftersom kommandona i "Kör applikationen utan IDE" är powershell-kommandon
+1. Öppna kommandotolken
 2. Börja med att klona ner repot från GitHub genom att köra kommandot `git clone https://github.com/eemretsson/datahandler.git`
 3. Använd kommandot `.\mvnw.cmd clean package` för att bygga och paketera projektet
-4. En körbar .jar fil skapas här -> `datahandler/target/datahandler-0.0.1-SNAPSHOT.jar`
+4. En körbar .jar fil skapas här -> `target/datahandler-0.0.1-SNAPSHOT.jar`
 
 ### Bygg och paketera med IDE (Instruktioner för IntelliJ)
 1. Starta IntelliJ
@@ -26,25 +26,27 @@ Mac/Linux-användare kan behöva andra kommandon för att bygga och köra applik
 ## Kör applikationen lokalt
 
 ### Kör applikationen lokalt utan IDE
-1. I en PowerShell-terminal, navigera till projektets rootmapp om du inte redan står där
+1. I kommandotolken, navigera till projektets rootmapp om du inte redan står där
 2. Använd kommando `java -jar target\datahandler-0.0.1-SNAPSHOT.jar` för att starta applikationen 
 3. Applikationen startar på http://localhost:8080
-4. Öppna en ny PowerShell-terminal för att kunna köra nedan API-anrop mot servern
+4. Öppna en ny terminal för att kunna köra nedan API-anrop mot servern
 
-- Hämta alla personer  -> `Invoke-RestMethod http://localhost:8080/api/data`
-- Limitera data till fem rader -> `Invoke-RestMethod http://localhost:8080/api/data?limit=5`
-- Negativt heltal (returnerar 400 Bad Request) -> `Invoke-RestMethod http://localhost:8080/api/data?limit=-7`
-- Ogiltigt värde (returnerar 400 Bad Request) -> `Invoke-RestMethod http://localhost:8080/api/data?limit=abc`
-
-När man kör api-anropen i PowerShell kommer inte någon felkod att synas. 
-För att se felkoderna så går det också att köra anropen i en webbläsare. Se till att ha utvecklarverktyget öppet.
+- Hämta alla personer  -> `curl http://localhost:8080/api/data`
+- Limitera data till fem rader -> `curl http://localhost:8080/api/data?limit=5`
+- Negativt heltal (returnerar 400 Bad Request) -> `curl http://localhost:8080/api/data?limit=-7`
+- Ogiltigt värde (returnerar 400 Bad Request) -> `curl http://localhost:8080/api/data?limit=abc`
 
 ### Kör applikationen lokalt med IDE
 1. I IntelliJ, klicka på den gröna play-knappen uppe i högra hörnet
 2. Applikationen startar på http://localhost:8080
 3. Öppna filen `test.http` som ligger i projektet under `src/test.http`
 4. I denna fil så finns färdiga api-anrop som går att köra genom den gröna play-knappen till vänster om respektive "GET"
-5. Det går även att köra dessa anrop i en webbläsare.
+5. Det går även att köra dessa anrop i en webbläsare:
+
+- Hämta alla personer  -> `http://localhost:8080/api/data`
+- Limitera data till fem rader -> `http://localhost:8080/api/data?limit=5`
+- Negativt heltal (returnerar 400 Bad Request) -> `http://localhost:8080/api/data?limit=-7`
+- Ogiltigt värde (returnerar 400 Bad Request) -> `http://localhost:8080/api/data?limit=abc`
 
 ## Datakälla (CSV-fil och format)
 
