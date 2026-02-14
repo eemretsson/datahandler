@@ -23,13 +23,8 @@ public class CsvPersonDataSource {
             BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
 
             String line;
-            boolean isFirstLine = true;
 
             while ((line = reader.readLine()) != null) {
-                if(isFirstLine) {
-                    isFirstLine = false;
-                    continue;
-                }
 
                 String[] values = line.split(";");
                 Person person = Person.from(Long.parseLong(values[0]), values[1], Integer.parseInt(values[2]), values[3]);
