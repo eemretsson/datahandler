@@ -2,6 +2,7 @@
 Detta projekt är byggt genom att använda
 - Java 21
 - Maven
+- Spring Boot
 
 Instruktionerna nedan är skrivna för att bygga och köra API-et på Windows då jag endast byggt och kört applikationen i den miljön.
 Mac/Linux-användare kan behöva andra kommandon för att bygga och köra applikationen. 
@@ -9,22 +10,22 @@ Mac/Linux-användare kan behöva andra kommandon för att bygga och köra applik
 ## Bygg applikationen
 
 ### Bygg och paketera utan IDE
-1. Öppna en valfri terminal förslagsvis Windows PowerShell eftersom kommandona i "Kör applikationen utan IDE" är powershell-kommandon
-2. Börja med att clona ner repot från GitHub genom att köra kommandot `git clone https://github.com/eemretsson/datahandler.git`
-3. Använd kommandot `.\mvnw.cmd clean package` för att bygga projektet
+1. Öppna en valfri terminal, förslagsvis Windows PowerShell, eftersom kommandona i "Kör applikationen utan IDE" är powershell-kommandon
+2. Börja med att klona ner repot från GitHub genom att köra kommandot `git clone https://github.com/eemretsson/datahandler.git`
+3. Använd kommandot `.\mvnw.cmd clean package` för att bygga och paketera projektet
 4. En körbar .jar fil skapas här -> `datahandler/target/datahandler-0.0.1-SNAPSHOT.jar`
 
 ### Bygg och paketera med IDE (Instruktioner för IntelliJ)
-1. Börja med att clona ner repot från GitHub `https://github.com/eemretsson/datahandler.git`
-2. Starta IntelliJ
-2. Öppna projektet genom att i menyn längst uppe till vänster välja File -> Open och gå sedan till root-foldern för projektet i utforskaren och välj Select Folder
+1. Starta IntelliJ
+2. Börja med att klona ner repot från GitHub `https://github.com/eemretsson/datahandler.git`
+2. Om inte projektet öppnas automatiskt efter kloning, öppna projektet genom att i menyn längst uppe till vänster välja File -> Open och gå sedan till root-foldern för projektet i utforskaren och välj Select Folder
 3. Till höger i IntelliJ finns en meny med en ikon som ser ut som ett "_m_", klicka på den ikonen
 4. Expandera "datahandler" och även "Lifecycle"
 5. Dubbelklicka på package, detta bygger och paketerar projektet till en körbar .jar fil
 
 ## Kör applikationen lokalt
 
-### Kör applikationen utan IDE
+### Kör applikationen lokalt utan IDE
 1. I en PowerShell-terminal, navigera till projektets rootmapp om du inte redan står där
 2. Använd kommando `java -jar target\datahandler-0.0.1-SNAPSHOT.jar` för att starta applikationen 
 3. Applikationen startar på http://localhost:8080
@@ -38,12 +39,12 @@ Mac/Linux-användare kan behöva andra kommandon för att bygga och köra applik
 När man kör api-anropen i PowerShell kommer inte någon felkod att synas. 
 För att se felkoderna så går det också att köra anropen i en webbläsare. Se till att ha utvecklarverktyget öppet.
 
-### Kör applikationen med IDE
+### Kör applikationen lokalt med IDE
 1. I IntelliJ, klicka på den gröna play-knappen uppe i högra hörnet
 2. Applikationen startar på http://localhost:8080
 3. Öppna filen `test.http` som ligger i projektet under `src/test.http`
 4. I denna fil så finns färdiga api-anrop som går att köra genom den gröna play-knappen till vänster om respektive "GET"
-5. Det går även att köra dessa anrop i en webbläsare. 
+5. Det går även att köra dessa anrop i en webbläsare.
 
 ## Datakälla (CSV-fil och format)
 
@@ -54,8 +55,8 @@ Strukturen i csv-filen ser ut som nedan, observera att inga headers finns i file
 `id;name;age;email`
 
 Exempeldata <br>
-`1;Alice;28;alice@example.com` <br> 
-`2;Bea;12;bea@example.com` <br>
-`3;Ceasar;56;ceasar@example.com` <br>
-`4;David;3;david@example.com` <br>
-`5;Erik;67;erik@example.com`
+`1;Liam;29;liam.andersson@example.com` <br> 
+`2;Noah;34;noah.lindberg@example.com` <br>
+`3;Ella;22;ella.svensson@example.com` <br>
+`4;Alma;27;alma.nilsson@example.com` <br>
+`5;Hugo;31;hugo.eriksson@example.com`
