@@ -1,8 +1,6 @@
 package com.example.datahandler.person.service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.example.datahandler.person.model.Person;
 import com.example.datahandler.person.repository.PersonRepository;

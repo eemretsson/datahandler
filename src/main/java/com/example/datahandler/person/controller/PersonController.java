@@ -27,11 +27,9 @@ public class PersonController {
 
         List<Person> persons = service.getAllOrLimitedPersons(limit);
 
-        if (persons.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.ok(persons);
+        return persons.isEmpty()
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(persons);
     }
 
 }
